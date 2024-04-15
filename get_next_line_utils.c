@@ -6,7 +6,7 @@
 /*   By: hecmarti <hecmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:45:08 by hecmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 13:00:53 by hecmarti         ###   ########.fr       */
+/*   Updated: 2024/04/15 14:13:46 by hecmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ char	*ft_substr(char *full, int start, int len)
  *
  * @param full The string to search in.
  * @param c The character to search for.
- * @return A pointer to the first occurrence of the character in the string, or NULL if not found.
+ * @return A pointer to the first occurrence of the character in the string,
+ * or NULL if not found.
  */
 char	*ft_strchr(char *full, char c)
 {
