@@ -1,0 +1,8 @@
+Palabras
+Bytes
+Listas
+TextoHTML
+Copia
+Lorem ipsum
+dolor sit 
+amet
