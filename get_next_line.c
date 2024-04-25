@@ -6,25 +6,11 @@
 /*   By: hecmarti <hecmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:45:40 by hecmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 14:13:18 by hecmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:03:07 by hecmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/**
- * @brief Frees the memory allocated for the buffer.
- * 
- * This function frees the memory allocated for the buffer and returns NULL.
- * 
- * @param buffer The buffer to be freed.
- * @return NULL
- */
-char	*ft_bufffree(char *buffer)
-{
-	free (buffer);
-	return (NULL);
-}
 
 /**
  * Frees the memory allocated for a line.
@@ -32,7 +18,7 @@ char	*ft_bufffree(char *buffer)
  * @param line The line to be freed.
  * @return NULL.
  */
-char	*ft_linefree(char *line)
+char	*linefree(char *line)
 {
 	free (line);
 	return (NULL);
@@ -56,7 +42,7 @@ char	*get_next_line(int fd)
 {
 	int			bytes_read;
 	char		*read_buffer;
-	static char	*rchars;
+	static char	*rchars = NULL;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
@@ -68,15 +54,17 @@ char	*get_next_line(int fd)
 	while (!ft_strchr(rchars, '\n') && bytes_read > 0)
 	{
 		bytes_read = read(fd, read_buffer, BUFFER_SIZE);
+		if (bytes_read < 0) {
+		ft_bzero(rchars, ft_slen(rchars, '\0'));
+			return ( free(read_buffer), NULL);
+	}
 		read_buffer[bytes_read] = '\0';
-		if (bytes_read < 0)
-			return (ft_bufffree(read_buffer));
 		rchars = ft_strjoin(rchars, read_buffer);
 	}
-	free(read_buffer);
+	linefree(read_buffer);
 	line = ft_linejoin(rchars);
 	rchars = ft_substr(rchars, ft_slen(rchars, '\n') + 1, ft_slen(rchars, 0));
 	if (!bytes_read && *line == '\0')
-		return (ft_linefree(line));
+		return (free(line), NULL);
 	return (line);
 }

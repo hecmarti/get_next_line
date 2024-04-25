@@ -6,11 +6,13 @@
 /*   By: hecmarti <hecmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:45:08 by hecmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 14:13:46 by hecmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:54:58 by hecmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
+#include <string.h>
 
 /**
  * @brief Calculates the length of a string until a specified character is found.
@@ -146,11 +148,38 @@ char	*ft_strchr(char *full, char c)
 	if (!full)
 		return (NULL);
 	i = 0;
-	while (full[i])
+	while (full[i] != '\0')
 	{
 		if (full[i] == c)
 			return (full + i);
 		i++;
 	}
 	return (NULL);
+}
+
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < n)
+		((char *)s)[i ++] = 0;
+}
+
+int	ft_lfc(char *str, char c) // lfc -> Lenght For Char
+{
+	int	i;
+	int	l;
+
+	i = 0;
+	l = 0;
+	while (str[l] != '\0')
+		l ++;
+	while (i <= l)
+	{
+		if (str[i] == (unsigned char)c)
+			return (i);
+		i ++;
+	}
+	return (-1);
 }

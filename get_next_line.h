@@ -6,7 +6,7 @@
 /*   By: hecmarti <hecmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:46:09 by hecmarti          #+#    #+#             */
-/*   Updated: 2024/04/15 12:46:13 by hecmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:57:23 by hecmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ char	*ft_substr(char *full, int start, int len);
 char	*ft_strchr(char *full, char c);
 char	*ft_linefree(char *line);
 char	*ft_bufffree(char *buff);
+void	ft_bzero(void *s, size_t n);
+int     ft_lfc(char *str, char c);
 
 #endif

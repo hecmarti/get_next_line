@@ -6,13 +6,14 @@
 /*   By: hecmarti <hecmarti@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 13:49:22 by ldel-rio          #+#    #+#             */
-/*   Updated: 2024/04/15 12:53:14 by hecmarti         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:59:08 by hecmarti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
 #include <fcntl.h>
+#include <string.h>
 
 int	main(void)
 {
@@ -29,11 +30,11 @@ int	main(void)
 	}
 	while (1)
 	{
-		next_line = get_next_line(fd);
+		next_line = get_next_line(234324324);
 		if (next_line == NULL)
 			break ;
 		count ++;
-		printf("[%d]:%s\n", count, next_line);
+		printf("[%d]:[%s]\nlength is: %lu", count, next_line, strlen(next_line));
 		free(next_line);
 		next_line = NULL;
 	}
